@@ -16,8 +16,7 @@ import com.example.log.ISLog;
 import android.util.Log;
 
 public class ParseJSON {
-	private static String JSONURL = "http://hmn.cs.wpi.edu/sizeFiles/test.json";
-//	private static String JSONURL = "localhost:4567/images";
+	private static String JSONURL = "http://10.0.2.2:4567/images";
 	private static String serverJSON; // JSON file parsed from server
 
 	public void parseServerJSON() {

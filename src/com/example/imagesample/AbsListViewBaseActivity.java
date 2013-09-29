@@ -4,11 +4,6 @@ import android.widget.AbsListView;
 
 import com.nostra13.universalimageloader.core.assist.PauseOnScrollListener;
 
-/**
- * 
- * 
- * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
- */
 public class AbsListViewBaseActivity extends BaseActivity {
 
 	protected static final String STATE_PAUSE_ON_SCROLL = "STATE_PAUSE_ON_SCROLL";

@@ -5,22 +5,15 @@ import java.util.List;
 
 import org.json.JSONArray;
 
-import android.util.Log;
-
-import com.example.log.ISLog;
 import com.example.parseJSON.ParseJSON;
-
-/**
- * @author Sergey Tarasevich (nostra13[at]gmail[dot]com) 常量类
- */
 
 public class Constants {
 
-	private String rootdir = "http://hmn.cs.wpi.edu/sizeFiles/"; 
+	private String rootdir = "http://10.0.2.2:4567/images/"; 
 	int length;
 	private String tempFilename;
 	private String tempHashVal;
-	// pair list
+	// value pair list
 	public List<String> listFile = new ArrayList<String>(length);
 	// filename list
 	public List<String> listFilename = new ArrayList<String>(length);
@@ -29,15 +22,16 @@ public class Constants {
 
 	JSONArray jsonArray = new JSONArray();
 
+	//create a JSONArray to store all the json values
 	public void updateJSONArray() {
-		String temp = ParseJSON.getServerJSON().replaceAll("[\"{}]", "");
+		String temp = ParseJSON.getServerJSON().replaceAll("[\"{}]", ""); //dismiss "{}"
 		String[] input = temp.split(",");
 		for (int i = 0; i < input.length; i++) {
 			jsonArray.put(input[i]);
 		}
-		Log.i(ISLog.LOG_TAG, "array done!");
 	}
 
+	//create three list containing pairs, filename and hash values, with the same index
 	public void updateList() {
 		for (int i = 0; i < jsonArray.length(); i++) {
 			try {
@@ -49,18 +43,7 @@ public class Constants {
 				listFilename.add(tempFilename);
 			} catch (Exception e) {
 			}
-		Log.i(ISLog.LOG_TAG, "list done! ");
 		}
-	}
-
-	// provide file name in the hash map
-	public String getFilename(int i) {
-		return null;
-	}
-
-	// provide hash value in the hash map
-	public String getHashValue() {
-		return null;
 	}
 
 	//generate selected image url
@@ -68,19 +51,14 @@ public class Constants {
 		StringBuilder builder = new StringBuilder();
         builder.append(rootdir);
         builder.append(listHashVal.get(i));
-        Log.i(ISLog.LOG_TAG, "url: " +	builder.toString());
         return builder.toString();
 	}
 
+	//constructor
 	Constants() {
 	}
 
-	// 配置
-	public static class Config {
-		public static final boolean DEVELOPER_MODE = false;
-	}
-
-	// 额外类
+	// extra class for images and image position
 	public static class Extra {
 		public static final String IMAGES = "com.nostra13.example.universalimageloader.IMAGES";
 		public static final String IMAGE_POSITION = "com.nostra13.example.universalimageloader.IMAGE_POSITION";
